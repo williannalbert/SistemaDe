@@ -5,7 +5,7 @@ namespace SistemaDeAgendamentos.Repositories;
 
 public class AgendamentoRepository : Repository<Agendamento>, IAgendamentoRepository
 {
-    public AgendamentoRepository(AppDbContext dbContext) : base(dbContext)
+    public AgendamentoRepository(AppDbContext context) : base(context)
     {
         
     }
