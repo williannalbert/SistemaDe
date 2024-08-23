@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaDeAgendamentos.Context;
+using SistemaDeAgendamentos.DTOs.Mapping;
 using SistemaDeAgendamentos.Repositories;
 using System.Text.Json.Serialization;
 
@@ -42,6 +43,8 @@ builder.Services.AddScoped<IServicoRepository, ServicoRepository>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddAutoMapper(typeof(AgendamentosProfile));
 
 var app = builder.Build();
 
