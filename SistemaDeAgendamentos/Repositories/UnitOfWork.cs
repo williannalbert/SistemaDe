@@ -38,6 +38,8 @@ public class UnitOfWork : IUnitOfWork
 
     public IProprietarioContatoRepository _proprietarioContatoRepository;
 
+    public IProprietarioRepository _proprietarioRepository;
+
     public IServicoRepository _servicoRepository;
 
     public AppDbContext _context;
@@ -179,6 +181,14 @@ public class UnitOfWork : IUnitOfWork
         get
         {
             return _proprietarioContatoRepository = _proprietarioContatoRepository ?? new ProprietarioContatoRepository(_context);
+        }
+    }
+
+    public IProprietarioRepository ProprietarioRepository
+    {
+        get
+        {
+            return _proprietarioRepository = _proprietarioRepository ?? new ProprietarioRepository(_context);
         }
     }
 

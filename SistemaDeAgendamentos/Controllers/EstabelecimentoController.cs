@@ -36,7 +36,7 @@ public class EstabelecimentoController : Controller
         }
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{id:int}", Name = "ObterEstabelecimento")]
     public async Task<ActionResult<EstabelecimentoDTO>> Get(int id)
     {
         try
@@ -67,11 +67,12 @@ public class EstabelecimentoController : Controller
             await _unitOfWork.CommitAsync();
 
             var novoEstabelecimentoDto = _mapper.Map<EstabelecimentoDTO>(novoEstabelecimento);
-            return Ok();
+            return new CreatedAtRouteResult("ObterEstabelecimento", new {id = novoEstabelecimentoDto.Id}, novoEstabelecimentoDto);
         }
         catch (Exception ex)
         {
             return BadRequest();
         }
     }
+
 }

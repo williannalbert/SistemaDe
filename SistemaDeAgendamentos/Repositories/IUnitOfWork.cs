@@ -19,6 +19,7 @@ public interface IUnitOfWork
     IFuncionarioServicoRepository FuncionarioServicoRepository { get; } 
     IHorarioAtendimentoRepository HorarioAtendimentoRepository { get; }
     IProprietarioContatoRepository ProprietarioContatoRepository { get; }
+    IProprietarioRepository ProprietarioRepository { get; }
     IServicoRepository ServicoRepository { get; }
     Task CommitAsync();
 }

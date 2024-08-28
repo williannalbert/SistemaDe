@@ -1,3 +1,11 @@
+E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.csproj.AssemblyReference.cache
+E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.AssemblyInfoInputs.cache
+E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.AssemblyInfo.cs
+E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.csproj.CoreCompileInputs.cache
+E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.MvcApplicationPartsAssemblyInfo.cs
+E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.MvcApplicationPartsAssemblyInfo.cache
+E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.sourcelink.json
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\appsettings.Development.json
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\appsettings.json
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\SistemaDeAgendamentos.exe
@@ -50,7 +58,7 @@ E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\System.Composition.TypedParts.dll
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\X.PagedList.dll
-E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\X.Web.PagedList.dll
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -103,14 +111,6 @@ E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.csproj.AssemblyReference.cache
-E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.GeneratedMSBuildEditorConfig.editorconfig
-E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.AssemblyInfoInputs.cache
-E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.AssemblyInfo.cs
-E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.csproj.CoreCompileInputs.cache
-E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.MvcApplicationPartsAssemblyInfo.cs
-E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.MvcApplicationPartsAssemblyInfo.cache
-E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\SistemaDeAgendamentos.sourcelink.json
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\staticwebassets.build.json
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\staticwebassets.development.json
 E:\Projetos\SistemaDeAgendamento\SistemaDeAgendamentos\SistemaDeAgendamentos\obj\Debug\net8.0\staticwebassets\msbuild.SistemaDeAgendamentos.Microsoft.AspNetCore.StaticWebAssets.props

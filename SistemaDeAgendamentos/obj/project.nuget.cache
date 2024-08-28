@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "68IhQYgMMbo=",
+  "dgSpecHash": "oNC6xKKNetg=",
   "success": true,
   "projectFilePath": "E:\\Projetos\\SistemaDeAgendamento\\SistemaDeAgendamentos\\SistemaDeAgendamentos\\SistemaDeAgendamentos.csproj",
   "expectedPackageFiles": [
@@ -71,7 +71,7 @@
     "C:\\Users\\Willian\\.nuget\\packages\\system.text.json\\8.0.4\\system.text.json.8.0.4.nupkg.sha512",
     "C:\\Users\\Willian\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
     "C:\\Users\\Willian\\.nuget\\packages\\x.pagedlist\\10.0.3\\x.pagedlist.10.0.3.nupkg.sha512",
-    "C:\\Users\\Willian\\.nuget\\packages\\x.pagedlist.mvc.core\\10.0.3\\x.pagedlist.mvc.core.10.0.3.nupkg.sha512"
+    "C:\\Users\\Willian\\.nuget\\packages\\x.web.pagedlist\\10.1.2\\x.web.pagedlist.10.1.2.nupkg.sha512"
   ],
   "logs": []
 }
