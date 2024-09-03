@@ -19,7 +19,7 @@ public class AgendamentosProfile : Profile
             CreateMap<Contato, ContatoDTO>().ReverseMap();
             CreateMap<Endereco, EnderecoDTO>().ReverseMap();
             CreateMap<EstabelecimentoContato, EstabelecimentoContatoDTO>().ReverseMap();
-            CreateMap<Estabelecimento, EstabelecimentoContatoDTO>().ReverseMap();
+            CreateMap<Estabelecimento, EstabelecimentoDTO>().ReverseMap();
             CreateMap<Funcionario, FuncionarioDTO>().ReverseMap();
             CreateMap<FuncionarioServico, FuncionarioServicoDTO>().ReverseMap();
             CreateMap<HorarioAtendimento, HorarioAtendimentoDTO>().ReverseMap();

@@ -61,6 +61,10 @@ public class EstabelecimentoController : Controller
             if(estabelecimentoDTO == null)
                 return BadRequest("Dados inválidos");
 
+            var proprietario = await _unitOfWork.ProprietarioRepository.GetAsync(p => p.Id == estabelecimentoDTO.ProprietarioId);
+            if(proprietario is null)
+                return NotFound("Proprietario não localizado");
+
             var estabelecimento = _mapper.Map<Estabelecimento>(estabelecimentoDTO);
             
             var novoEstabelecimento = _unitOfWork.EstabelecimentoRepository.Create(estabelecimento);
@@ -74,5 +78,48 @@ public class EstabelecimentoController : Controller
             return BadRequest();
         }
     }
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<EstabelecimentoDTO>> Put(int id, EstabelecimentoDTO estabelecimentoDTO)
+    {
+        try
+        {
+            if (id != estabelecimentoDTO.Id)
+                return BadRequest();
 
+            var estabelecimento = _mapper.Map<Estabelecimento>(estabelecimentoDTO);
+
+            var estabelecimentoAtualizado = _unitOfWork.EstabelecimentoRepository.Update(estabelecimento);
+            await _unitOfWork.CommitAsync();
+
+            var estabelecimentoAtualizadoDto = _mapper.Map<EstabelecimentoDTO>(estabelecimentoAtualizado);
+
+            return Ok(estabelecimentoAtualizadoDto);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<EstabelecimentoDTO>> Delete(int id)
+    {
+        try
+        {
+            var estabelecimento = await _unitOfWork.EstabelecimentoRepository.GetAsync(p => p.Id == id);
+            if (estabelecimento is null)
+            {
+                return NotFound("Informações não localizadas");
+            }
+
+            var estabelecimentoDeletado = _unitOfWork.EstabelecimentoRepository.Delete(estabelecimento);
+            await _unitOfWork.CommitAsync();
+
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest();
+        }
+    }
 }
