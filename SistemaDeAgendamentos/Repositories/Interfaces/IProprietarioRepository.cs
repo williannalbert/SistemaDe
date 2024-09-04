@@ -1,7 +1,7 @@
 ﻿using SistemaDeAgendamentos.Models;
 using SistemaDeAgendamentos.Pagination;
 
-namespace SistemaDeAgendamentos.Repositories;
+namespace SistemaDeAgendamentos.Repositories.Interfaces;
 
 public interface IProprietarioRepository : IRepository<Proprietario>
 {

@@ -1,5 +1,6 @@
 ﻿using SistemaDeAgendamentos.Context;
 using SistemaDeAgendamentos.Models;
+using SistemaDeAgendamentos.Repositories.Interfaces;
 
 namespace SistemaDeAgendamentos.Repositories;
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaDeAgendamentos.DTOs;
 using SistemaDeAgendamentos.Models;
 using SistemaDeAgendamentos.Repositories;
+using SistemaDeAgendamentos.Services.Interfaces;
 
 namespace SistemaDeAgendamentos.Controllers;
 
@@ -10,12 +11,10 @@ namespace SistemaDeAgendamentos.Controllers;
 [ApiController]
 public class EstabelecimentoController : Controller
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
-    public EstabelecimentoController(IUnitOfWork unitOfWork, IMapper mapper)
+    private readonly IEstabelecimentoService _estabelecimentoService;
+    public EstabelecimentoController(IEstabelecimentoService estabelecimentoService)
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
+        _estabelecimentoService = estabelecimentoService;   
     }
 
     [HttpGet]
@@ -23,12 +22,12 @@ public class EstabelecimentoController : Controller
     {
         try
         {
-            var estabelecimentos = await _unitOfWork.EstabelecimentoRepository.GetAllAsync();
+            var estabelecimentos = await _estabelecimentoService.GetAll();
             if (estabelecimentos == null)
                 return NotFound("Não há estabelecimentos cadastrados");
 
-            var estabelecimentosDto = _mapper.Map<IEnumerable<EstabelecimentoDTO>>(estabelecimentos);
-            return Ok(estabelecimentosDto);
+            
+            return Ok(estabelecimentos);
         }
         catch (Exception ex)
         {
@@ -41,12 +40,12 @@ public class EstabelecimentoController : Controller
     {
         try
         {
-            var estabelecimento = await _unitOfWork.EstabelecimentoRepository.GetAsync(e => e.Id == id);
+            var estabelecimento = await _estabelecimentoService.Get(id);
             if(estabelecimento == null)
                 return NotFound("Estabelecimento não localizado");
 
-            var estabelecimentoDto = _mapper.Map<EstabelecimentoDTO>(estabelecimento);
-            return Ok(estabelecimentoDto);
+            
+            return Ok(estabelecimento);
         }
         catch (Exception ex)
         {
@@ -61,16 +60,8 @@ public class EstabelecimentoController : Controller
             if(estabelecimentoDTO == null)
                 return BadRequest("Dados inválidos");
 
-            var proprietario = await _unitOfWork.ProprietarioRepository.GetAsync(p => p.Id == estabelecimentoDTO.ProprietarioId);
-            if(proprietario is null)
-                return NotFound("Proprietario não localizado");
-
-            var estabelecimento = _mapper.Map<Estabelecimento>(estabelecimentoDTO);
+            var novoEstabelecimentoDto = await _estabelecimentoService.Create(estabelecimentoDTO);
             
-            var novoEstabelecimento = _unitOfWork.EstabelecimentoRepository.Create(estabelecimento);
-            await _unitOfWork.CommitAsync();
-
-            var novoEstabelecimentoDto = _mapper.Map<EstabelecimentoDTO>(novoEstabelecimento);
             return new CreatedAtRouteResult("ObterEstabelecimento", new {id = novoEstabelecimentoDto.Id}, novoEstabelecimentoDto);
         }
         catch (Exception ex)
@@ -86,13 +77,7 @@ public class EstabelecimentoController : Controller
             if (id != estabelecimentoDTO.Id)
                 return BadRequest();
 
-            var estabelecimento = _mapper.Map<Estabelecimento>(estabelecimentoDTO);
-
-            var estabelecimentoAtualizado = _unitOfWork.EstabelecimentoRepository.Update(estabelecimento);
-            await _unitOfWork.CommitAsync();
-
-            var estabelecimentoAtualizadoDto = _mapper.Map<EstabelecimentoDTO>(estabelecimentoAtualizado);
-
+            var estabelecimentoAtualizadoDto = await _estabelecimentoService.Update(id, estabelecimentoDTO);
             return Ok(estabelecimentoAtualizadoDto);
         }
         catch (Exception ex)
@@ -102,18 +87,15 @@ public class EstabelecimentoController : Controller
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<EstabelecimentoDTO>> Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
         try
         {
-            var estabelecimento = await _unitOfWork.EstabelecimentoRepository.GetAsync(p => p.Id == id);
+            var estabelecimento = await _estabelecimentoService.Delete(id);
             if (estabelecimento is null)
             {
                 return NotFound("Informações não localizadas");
-            }
-
-            var estabelecimentoDeletado = _unitOfWork.EstabelecimentoRepository.Delete(estabelecimento);
-            await _unitOfWork.CommitAsync();
+            }          
 
             return NoContent();
         }

@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using SistemaDeAgendamentos.Context;
 using SistemaDeAgendamentos.DTOs.Mapping;
 using SistemaDeAgendamentos.Repositories;
+using SistemaDeAgendamentos.Repositories.Interfaces;
+using SistemaDeAgendamentos.Services;
+using SistemaDeAgendamentos.Services.Interfaces;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,6 +43,8 @@ builder.Services.AddScoped<IHorarioAtendimentoRepository, HorarioAtendimentoRepo
 builder.Services.AddScoped<IProprietarioContatoRepository, ProprietarioContatoRepository>();
 builder.Services.AddScoped<IProprietarioRepository, ProprietarioRepository>();
 builder.Services.AddScoped<IServicoRepository, ServicoRepository>();
+
+builder.Services.AddScoped<IEstabelecimentoService, EstabelecimentoService>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

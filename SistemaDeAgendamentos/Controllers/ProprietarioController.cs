@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using SistemaDeAgendamentos.DTOs;
 using SistemaDeAgendamentos.Models;
 using SistemaDeAgendamentos.Pagination;
-using SistemaDeAgendamentos.Repositories;
+using SistemaDeAgendamentos.Repositories.Interfaces;
 
 
 

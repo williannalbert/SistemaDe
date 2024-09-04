@@ -2,6 +2,7 @@
 using SistemaDeAgendamentos.Context;
 using SistemaDeAgendamentos.Models;
 using SistemaDeAgendamentos.Pagination;
+using SistemaDeAgendamentos.Repositories.Interfaces;
 using X.PagedList;
 
 namespace SistemaDeAgendamentos.Repositories;

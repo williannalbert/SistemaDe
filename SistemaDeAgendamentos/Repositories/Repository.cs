@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SistemaDeAgendamentos.Context;
+using SistemaDeAgendamentos.Repositories.Interfaces;
 using System.Linq.Expressions;
 
 namespace SistemaDeAgendamentos.Repositories
