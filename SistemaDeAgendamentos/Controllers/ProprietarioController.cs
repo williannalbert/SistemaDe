@@ -5,6 +5,7 @@ using SistemaDeAgendamentos.DTOs;
 using SistemaDeAgendamentos.Models;
 using SistemaDeAgendamentos.Pagination;
 using SistemaDeAgendamentos.Repositories.Interfaces;
+using SistemaDeAgendamentos.Services.Interfaces;
 
 
 
@@ -14,12 +15,10 @@ namespace SistemaDeAgendamentos.Controllers;
 [ApiController]
 public class ProprietarioController : Controller
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
-    public ProprietarioController(IUnitOfWork unitOfWork, IMapper mapper)
+    private readonly IProprietarioService _proprietarioService;
+    public ProprietarioController(IProprietarioService proprietarioService)
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
+        _proprietarioService = proprietarioService;
     }
 
     [HttpGet]
@@ -28,9 +27,22 @@ public class ProprietarioController : Controller
     {
         try
         {
-            PageList<Proprietario> proprietarios = await _unitOfWork.ProprietarioRepository.GetProprietariosAsync(proprietarioParameters);
+            var proprietariosDto = await _proprietarioService.GetAllPaged(proprietarioParameters);
 
-            return ObterProprietarios(proprietarios);
+            if(proprietariosDto is null)
+                return NotFound("Informações não localizadas");
+
+            var metadata = new
+            {
+                proprietariosDto.CurrentPage,
+                proprietariosDto.TotalPage,
+                proprietariosDto.PageSize,
+                proprietariosDto.TotalCount
+            };
+
+            Response.Headers.Append("Pagination", JsonConvert.SerializeObject(metadata));
+
+            return Ok(proprietariosDto);
         }
         catch (Exception ex)
         {
@@ -38,35 +50,16 @@ public class ProprietarioController : Controller
         }
     }
 
-    private ActionResult<IEnumerable<ProprietarioDTO>> ObterProprietarios(PageList<Proprietario> proprietarios)
-    {
-        var metadata = new
-        {
-            proprietarios.CurrentPage,
-            proprietarios.TotalPage,
-            proprietarios.PageSize,
-            proprietarios.TotalCount
-        };
-
-        Response.Headers.Append("Pagination", JsonConvert.SerializeObject(metadata));
-
-        if (proprietarios == null)
-            return NotFound("Informações não localizadas");
-
-        var proprietariosDto = _mapper.Map<IEnumerable<ProprietarioDTO>>(proprietarios);
-        return Ok(proprietariosDto);
-    }
 
     [HttpGet("{id:int}", Name = "ObterProprietario")]
     public async Task<ActionResult<ProprietarioDTO>> Get(int id)
     {
         try
         {
-            var proprietario = await _unitOfWork.ProprietarioRepository.GetAsync(e => e.Id == id);
-            if (proprietario == null)
-                return NotFound("Informações não localizadas");
+            var proprietarioDto = await _proprietarioService.Get(id);
+            if (proprietarioDto == null)
+                return NotFound("Proprietario não localizado");
 
-            var proprietarioDto = _mapper.Map<ProprietarioDTO>(proprietario);
             return Ok(proprietarioDto);
         }
         catch (Exception ex)
@@ -83,12 +76,8 @@ public class ProprietarioController : Controller
             if (proprietarioDTO == null)
                 return BadRequest("Dados inválidos");
 
-            var proprietario = _mapper.Map<Proprietario>(proprietarioDTO);
-
-            var novoProprietario = _unitOfWork.ProprietarioRepository.Create(proprietario);
-            await _unitOfWork.CommitAsync();
-
-            var novoProprietarioDto = _mapper.Map<ProprietarioDTO>(novoProprietario);
+            var novoProprietarioDto = await _proprietarioService.Create(proprietarioDTO);
+            
             return new CreatedAtRouteResult("ObterProprietario", new { id = novoProprietarioDto.Id }, novoProprietarioDto);
         }
         catch (Exception ex)
@@ -105,12 +94,7 @@ public class ProprietarioController : Controller
             if (id != proprietarioDTO.Id)
                 return BadRequest();
 
-            var proprietario = _mapper.Map<Proprietario>(proprietarioDTO);
-
-            var proprietarioAtualizado = _unitOfWork.ProprietarioRepository.Update(proprietario);
-            await _unitOfWork.CommitAsync();
-
-            var proprietarioAtualizadoDto = _mapper.Map<ProprietarioDTO>(proprietarioAtualizado);
+            var proprietarioAtualizadoDto = await _proprietarioService.Update(id, proprietarioDTO);
 
             return Ok(proprietarioAtualizadoDto);
         }
@@ -125,14 +109,9 @@ public class ProprietarioController : Controller
     {
         try
         {
-            var proprietario = await _unitOfWork.ProprietarioRepository.GetAsync(p => p.Id == id);
-            if (proprietario is null)
-            {
+            var proprietario = await _proprietarioService.Delete(id);
+            if(proprietario is null)
                 return NotFound("Informações não localizadas");
-            }
-
-            var proprietarioDeletado = _unitOfWork.ProprietarioRepository.Delete(proprietario);
-            await _unitOfWork.CommitAsync();
 
             return NoContent();
         }

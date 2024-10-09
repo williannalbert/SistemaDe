@@ -40,12 +40,12 @@ public class EstabelecimentoController : Controller
     {
         try
         {
-            var estabelecimento = await _estabelecimentoService.Get(id);
-            if(estabelecimento == null)
+            var estabelecimentoDTO = await _estabelecimentoService.Get(id);
+            if(estabelecimentoDTO == null)
                 return NotFound("Estabelecimento não localizado");
 
             
-            return Ok(estabelecimento);
+            return Ok(estabelecimentoDTO);
         }
         catch (Exception ex)
         {
